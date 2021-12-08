@@ -4,7 +4,6 @@ import { View, Text, SafeAreaView, Image, StyleSheet, ScrollView, Button, FlatLi
 import * as Animatable from "react-native-animatable";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Feather } from '@expo/vector-icons'
-import { TabBar } from '../components/TabBar'
 import { Header } from '../components/Header';
 import HomeScreen from './HomeScreen';
 

@@ -32,11 +32,14 @@ const SplashScreen = ({ navigation }) => {
                 animation = 'fadeInUpBig'
             >
                 <Text style = {styles.title}>Suas finanças em um só lugar</Text>
-                <Text style = {styles.text}>Entre com sua conta</Text>
+                
                 <View style = {styles.button}>
-                <TouchableOpacity onPress={()=> navigation.navigate('SignIn')} style = {styles.signIn}>
-                    <Text style ={styles.textSign}>Iniciar </Text>
+                <TouchableOpacity onPress={()=> navigation.navigate('HomeScreen')}  style = {styles.signIn}>
+                    <Text style ={styles.textSign}>Iniciar sem conta</Text>
                     <Feather name='arrow-right' size={30} color='white'/>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=> navigation.navigate('SignIn')} >
+                    <Text style = {styles.text}>Ou entre com sua conta</Text>
                 </TouchableOpacity>
                 </View>
             </Animatable.View>
@@ -64,7 +67,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
-        paddingVertical: 50,
+        paddingVertical: 80,
         paddingHorizontal: 30
     },
     logo: {
@@ -73,19 +76,24 @@ const styles = StyleSheet.create({
     },
     text: {
         color:'black',
-        marginTop:5
+        marginTop:15,
+        fontWeight:'bold',
+        fontSize:14,
+        textDecorationLine:'underline'
     },
     title:{
         color:'#05375a',
         fontSize:30,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        paddingBottom:10,
+        marginTop:-40
     },
     button: {
         alignItems: 'center',
-        marginTop:30,
+        marginTop:15,
     },
     signIn: {
-        width: 150,
+        width: 250,
         height: 40,
         backgroundColor:'#00eaff',
         justifyContent: 'center',
@@ -96,6 +104,8 @@ const styles = StyleSheet.create({
     textSign: {
         color: 'white',
         fontWeight: 'bold',
-        fontSize:20
+        fontSize:20,
+        marginLeft:15,
+        paddingHorizontal:12
     }
 });
