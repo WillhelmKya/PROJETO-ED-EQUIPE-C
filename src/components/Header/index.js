@@ -8,7 +8,7 @@ export const Header = () => {
             <Text style = {{fontSize:15, color:'white', paddingLeft:10}}>Nome Usuário</Text>
         </View>
     )
-}
+    }
 
 const styles = StyleSheet.create({
     header: {
