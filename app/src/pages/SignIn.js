@@ -20,7 +20,6 @@ import lista from "../dataStructure/lista";
 import HomeScreen from "./HomeScreen";
 
 
-
 const SignIn = ({navigation}) => {
 
     const [data,setData] = React.useState({
