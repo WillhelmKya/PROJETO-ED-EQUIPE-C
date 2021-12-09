@@ -18,7 +18,7 @@ const TADLista = () => {
 
 const HomeScreen = ({navigation}) => {
 
-    const [saldo, setSaldo] = React.useState (0)
+    const [saldo, setSaldo] = React.useState (1)
 
     const converterParaReais = (saldoAtual) => {
         const novoSaldo = saldoAtual / 100
