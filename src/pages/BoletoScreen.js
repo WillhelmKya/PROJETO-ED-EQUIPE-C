@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Dimensions } from "react-native";
 import { View, Text, SafeAreaView, Image, StyleSheet, ScrollView, Button, FlatList } from 'react-native';
 import * as Animatable from "react-native-animatable";
@@ -14,7 +14,13 @@ const BoletoScreen = ({navigation}) => {
             
             <Text style={{fontSize:20, fontWeight: 'bold', color: 'white', marginLeft: 50, marginTop: 20}}>Boletos</Text>
 
-            <ScrollView style={{backgroundColor: '#161616', marginVertical: 30, marginHorizontal: 30}}>
+            <ScrollView style={{
+                backgroundColor: '#161616', 
+                marginVertical: 30, 
+                marginHorizontal: 30,}}
+                fadingEdgeLength={5}
+                
+            >
                 <View style={styles.scrollItem}>
                 </View>
                 <View style={styles.scrollItem}>
@@ -96,7 +102,7 @@ const styles = StyleSheet.create({
         height: 60,
         backgroundColor: '#10D1FC',
         marginTop: 5,
-        borderRadius: 10,
+        borderRadius: 20,
     },
     buttonSaldo: {
         backgroundColor: 'white',

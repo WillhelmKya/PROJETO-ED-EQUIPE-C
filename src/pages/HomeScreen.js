@@ -1,27 +1,70 @@
-import React from "react";
+import React, {useState} from "react";
 import { Dimensions } from "react-native";
-import { View, Text, SafeAreaView, Image, StyleSheet, ScrollView, Button, FlatList } from 'react-native';
+import { TextInput,View, Text, SafeAreaView, StyleSheet, ScrollView, Modal } from 'react-native';
+import styled from "styled-components";
 import * as Animatable from "react-native-animatable";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Feather } from '@expo/vector-icons'
 import { Header } from '../components/Header';
 import BoletoScreen from './BoletoScreen';
 
+/*
+TAD lista para organização dos itens
+*/
+
+const TADLista = () => {
+    const lista = [1,2,3]
+}
+
 const HomeScreen = ({navigation}) => {
+
+    const [saldo, setSaldo] = React.useState (0)
+
+    const converterParaReais = (saldoAtual) => {
+        const novoSaldo = saldoAtual / 100
+
+        return novoSaldo.toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+    }
+
+    const adicionar = () => {
+        setSaldo(saldo+100)
+    }
+
     return(
-        <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+37}}>
+        <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+38}}>
             <Header/>
             
-            <Text style={{fontSize:20, fontWeight: 'bold', color: 'white', marginLeft: 50, marginTop: 20}}>Saldo</Text>
+            <Text style={{fontSize:25, fontWeight: 'bold', color: 'white', marginLeft: 50, marginTop: 20}}>Saldo</Text>
             
             <View  style={styles.box}>
-                <Text style={{margin: 25, color: 'white', fontSize: 25, fontWeight: 'bold'}} >R$ 00,00</Text>
-                <TouchableOpacity style={styles.buttonSaldo}>
+                <TextInput 
+                    keyboardType='numeric' 
+                    style={{
+                        margin: 25, 
+                        color: 'white', 
+                        fontSize: 50, 
+                        fontWeight: 'bold'
+                    }}
+
+                >
+                    R$ {converterParaReais(saldo)}
+                </TextInput>
+                <TouchableOpacity 
+                    onPress = {()=>adicionar()}
+                    
+                    style={styles.buttonSaldo}
+                >
                     <Feather name='plus' size={30} style={{marginTop: 15, color: '#10D1FC'}}/>
                 </TouchableOpacity>
             </View>
             
-            <ScrollView style={{backgroundColor: '#161616', marginVertical: 30, marginHorizontal: 30}}>
+            <ScrollView style={{
+                backgroundColor: '#161616', 
+                marginVertical: 30, 
+                marginHorizontal: 30
+                }}
+                fadingEdgeLength={5}
+                >
                 <View style={styles.scrollItem}>
                 </View>
                 <View style={styles.scrollItem}>
@@ -112,21 +155,22 @@ const styles = StyleSheet.create({
         marginHorizontal: 30,
         backgroundColor: '#10D1FC',
         flexDirection: 'row',
+        alignItems: 'center'
     },
     scrollItem: {
         height: 60,
         backgroundColor: '#10D1FC',
         marginTop: 5,
-        borderRadius: 10,
+        borderRadius: 20,
     },
     buttonSaldo: {
         backgroundColor: 'white',
         borderRadius: 30,
         height: 60,
         width: 60,
-        alignItems: 'center',
-        marginTop: 45,
-        marginLeft: 50,
+        alignItems:'center',
+        position:'relative',
+        marginLeft: 10,
     },
 })
 

@@ -1,3 +1,5 @@
+import React from "react";
+
 const lista = [
     ['Julia', 'teste'],     ['Arnaldo', 'arrev'],
     ['Rodrigo'],   ['Ronaldo'],
@@ -8,4 +10,4 @@ const lista = [
     ['Malvuysuo']
   ];
 
-  export default lista
+export default lista
