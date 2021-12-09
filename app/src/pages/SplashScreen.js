@@ -6,6 +6,7 @@ import {
     StyleSheet,
     Dimensions,
     Image,
+    Alert,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable'
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -38,7 +39,19 @@ const SplashScreen = ({ navigation }) => {
                     <Text style ={styles.textSign}>Iniciar sem conta</Text>
                     <Feather name='arrow-right' size={30} color='white'/>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={()=> navigation.navigate('SignIn')} >
+                <TouchableOpacity onPress={()=> 
+                    Alert.alert(
+                        'Olá!',
+                        'Essa função ainda não se encontra disponível',
+                    
+                    [
+                        {text: 'Continuar mesmo assim', onPress: ()=> navigation.navigate('SignIn')},
+                        {text: 'Certo', onPress: ()=> console.log('Certo pressionado')}
+                    ],
+                    { cancelable: true }
+                    )
+                } 
+                    >
                     <Text style = {styles.text}>Ou entre com sua conta</Text>
                 </TouchableOpacity>
                 </View>
