@@ -23,7 +23,7 @@ const SplashScreen = ({ navigation }) => {
                     animation='bounceIn'
                     duration={1500}
                     
-                source = {require('./icon.png')}
+                source = {require('../../assets/icon.png')}
                 style = {styles.logo}
                 resizeMode = 'stretch'
                 />
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     signIn: {
         width: 250,
         height: 40,
-        backgroundColor:'#00eaff',
+        backgroundColor:'#80B01B',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius:50,

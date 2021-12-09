@@ -34,30 +34,6 @@ const HomeScreen = ({navigation}) => {
         <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+38}}>
             <Header/>
             
-            <Text style={{fontSize:25, fontWeight: 'bold', color: 'white', marginLeft: 50, marginTop: 20}}>Saldo</Text>
-            
-            <View  style={styles.box}>
-                <TextInput 
-                    keyboardType='numeric' 
-                    style={{
-                        margin: 25, 
-                        color: 'white', 
-                        fontSize: 50, 
-                        fontWeight: 'bold'
-                    }}
-
-                >
-                    R$ {converterParaReais(saldo)}
-                </TextInput>
-                <TouchableOpacity 
-                    onPress = {()=>adicionar()}
-                    
-                    style={styles.buttonSaldo}
-                >
-                    <Feather name='plus' size={30} style={{marginTop: 15, color: '#10D1FC'}}/>
-                </TouchableOpacity>
-            </View>
-            
             <ScrollView style={{
                 backgroundColor: '#161616', 
                 marginVertical: 30, 
@@ -162,15 +138,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#10D1FC',
         marginTop: 5,
         borderRadius: 20,
-    },
-    buttonSaldo: {
-        backgroundColor: 'white',
-        borderRadius: 30,
-        height: 60,
-        width: 60,
-        alignItems:'center',
-        position:'relative',
-        marginLeft: 10,
     },
 })
 
