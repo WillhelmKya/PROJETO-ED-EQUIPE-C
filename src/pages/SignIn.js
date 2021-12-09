@@ -8,34 +8,24 @@ import {
     Dimensions,
     StatusBar,
     TextInput,
-    Alert,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable'
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Feather } from '@expo/vector-icons'
 import { FontAwesome } from '@expo/vector-icons'
 import SplashScreen from "./SplashScreen";
+import trie from "../dataStructure/trie";
+import lista from "../dataStructure/lista";
+import HomeScreen from "./HomeScreen";
 
-
-const lista = [
-    'Julia',     'Arnaldo',
-    'Rodrigo',   'Ronaldo',
-    'Edson',     'Rafaela',
-    'Maria',     'Leticia',
-    'Rodrigo',   'Juliano',
-    'Robin',    'Athena',
-    'Alfredo'
-  ]
 
 const SignIn = ({navigation}) => {
 
     const [data,setData] = React.useState({
         usuario: '',
         senha: '',
-        confirm_senha: '',
         check_textInputChange: false,
-        secureTextEntry: true,
-        confirm_secureTextEntry: true,
+        secureTextEntry: true
     });
 
     const textInputChange = (val) => {
@@ -61,13 +51,6 @@ const SignIn = ({navigation}) => {
         });
     }
 
-    const handleConfirmSenha = (val) => {
-        setData({
-            ... data,
-            confirm_senha: val
-        });
-    }
-
     const updateSecure = () => {
         setData({
             ... data,
@@ -75,17 +58,10 @@ const SignIn = ({navigation}) => {
         });
     }
 
-    const updateConfirmSecure = () => {
-        setData({
-            ... data,
-            confirm_secureTextEntry: !data.confirm_secureTextEntry
-        });
-    }
-
     return (
         <View style = {styles.container}>
             <View style = {styles.header}>
-                <Text style = {styles.text_header}>Registre-se Agora!</Text>
+                <Text style = {styles.text_header}>Bem Vindo!</Text>
             </View>
             <View style = {styles.footer}>
                 <Text style = {styles.text_footer}>Nome de Usuário</Text>
@@ -105,13 +81,12 @@ const SignIn = ({navigation}) => {
                     <Animatable.View
                         animation='bounceIn'
                     >
-                        <TouchableOpacity onPress = {()=> alert('Nome de usuário já cadastrado')}>
-                            <Feather
-                                name='x-circle'
-                                color ='black'
-                                size= {20}
-                            />
-                        </TouchableOpacity>
+                        
+                        <Feather
+                            name='check-circle'
+                            color ='black'
+                            size= {20}
+                        />
                     </Animatable.View>
                     : null }
                 </View>
@@ -144,45 +119,18 @@ const SignIn = ({navigation}) => {
                     />}
                     </TouchableOpacity>     
                 </View>
-                <Text style = {[styles.text_footer, 
-                {marginTop:35}]}>Confirmar Senha</Text>
-                <View style = { styles.action } >
-                    <FontAwesome 
-                        name='lock' 
-                        color= '#05375a' 
-                        size ={20}
-                    />
-                    <TextInput
-                        secureTextEntry={data.confirm_secureTextEntry ? true : false}
-                        placeholder="Sua senha"
-                        style= {styles.textInput}
-                        autoCapitalize='none'
-                        onChangeText= {(val)=>handleConfirmSenha(val)}
-                    />
-                    <TouchableOpacity
-                        onPress = {updateConfirmSecure}
-                    >
-                        {data.confirm_secureTextEntry ?<Feather
-                            name='eye-off'
-                            color ='black'
-                            size= {20}
-                        />: <Feather
-                        name='eye'
-                        color ='black'
-                        size= {20}
-                        
-                    />}
-                    </TouchableOpacity>     
-                </View>
 
-                <TouchableOpacity style = {styles.button}>
-                    <Text style = {styles.textSign}>Registrar</Text>
+                <TouchableOpacity 
+                    style = {styles.button}
+                    onPress= {()=>navigation.navigate(HomeScreen)}
+                >
+                    <Text style = {styles.textSign}>Entrar</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity 
-                onPress = {() => navigation.goBack()}
+                onPress = {() => navigation.navigate('SignUp')}
                 style = {styles.button1}>
-                    <Text style = {styles.textSign1}>Entrar</Text>
+                    <Text style = {styles.textSign1}>Registrar</Text>
                 </TouchableOpacity>
 
 
@@ -198,7 +146,7 @@ export default SignIn
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        backgroundColor:'#232323'
+        backgroundColor:'#161616'
     },
     header: {
         flex: 1,
