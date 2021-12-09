@@ -33,30 +33,17 @@ const HomeScreen = ({navigation}) => {
     return(
         <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+38}}>
             <Header/>
+
+            <Text style={{fontSize: 25, color: 'white', marginTop: 77, marginLeft: 30}}>Transações</Text>
             
             <ScrollView style={{
-                backgroundColor: '#161616', 
-                marginVertical: 30, 
-                marginHorizontal: 30
+                backgroundColor: 'white', 
+                marginTop: 20,
+                borderTopLeftRadius: 30,
+                borderTopRightRadius: 30,
                 }}
                 fadingEdgeLength={5}
                 >
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
                 <View style={styles.scrollItem}>
                 </View>
                 <View style={styles.scrollItem}>
@@ -100,16 +87,16 @@ const HomeScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
     tabBar: {
-        backgroundColor: '#232323',
+        backgroundColor: '#3E3E3E',
         height: 60,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 50,
-        paddingBottom: 10
+        paddingBottom: 10,
     },
     button: {
-        backgroundColor: '#10D1FC',
+        backgroundColor: '#80B01B',
         borderRadius: 30,
         marginTop: 10,
         height: 40,
@@ -117,27 +104,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     buttonMain: {
-        backgroundColor: '#10D1FC',
+        backgroundColor: '#80B01B',
         borderRadius: 30,
         height: 60,
         width: 60,
         alignItems: 'center',
         marginBottom: 30,
     },
-    box: {
-        height: 150,
-        borderRadius: 30,
-        marginVertical: 5,
-        marginHorizontal: 30,
-        backgroundColor: '#10D1FC',
-        flexDirection: 'row',
-        alignItems: 'center'
-    },
     scrollItem: {
-        height: 60,
-        backgroundColor: '#10D1FC',
-        marginTop: 5,
-        borderRadius: 20,
+        height: 55,
+        backgroundColor: '#E0E0E0',
+        marginTop: 20,
+        marginHorizontal: 20,
+        borderRadius: 30,
     },
 })
 

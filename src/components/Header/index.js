@@ -48,11 +48,12 @@ export const Header = () => {
 const styles = StyleSheet.create({
     header: {
         height: 200,
-        backgroundColor: '#232323',
+        backgroundColor: '#3E3E3E',
         paddingLeft: 30,
         paddingRight: 30,
         paddingTop: 35,
-        borderRadius: 20
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20
     },
     iconLogo: {
         backgroundColor: '#161616',
