@@ -8,27 +8,8 @@ import { Feather } from '@expo/vector-icons'
 import { Header } from '../components/Header';
 import BoletoScreen from './BoletoScreen';
 
-/*
-TAD lista para organização dos itens
-*/
-
-const TADLista = () => {
-    const lista = [1,2,3]
-}
 
 const HomeScreen = ({navigation}) => {
-
-    const [saldo, setSaldo] = React.useState (1)
-
-    const converterParaReais = (saldoAtual) => {
-        const novoSaldo = saldoAtual / 100
-
-        return novoSaldo.toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
-    }
-
-    const adicionar = () => {
-        setSaldo(saldo+100)
-    }
 
     return(
         <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+38}}>
@@ -117,7 +98,14 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginHorizontal: 20,
         borderRadius: 30,
+        
     },
+    modalBackground: {
+        flex:1,
+        backgroundColor:'rgba(0,0,0,0.5)',
+        justifyContent:'center',
+        alignItems:'center'
+    }
 })
 
 export default HomeScreen

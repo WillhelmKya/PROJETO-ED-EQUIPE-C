@@ -4,16 +4,17 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { Feather } from '@expo/vector-icons'
 
 export const Header = () => {
+
     const [saldo, setSaldo] = React.useState (0)
 
     const converterParaReais = (saldoAtual) => {
-        const novoSaldo = saldoAtual / 100
+        const novoSaldo = saldoAtual / 1
 
         return novoSaldo.toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
     }
 
     const adicionar = () => {
-        setSaldo(saldo+100)
+        setSaldo(saldo+1)
     }
 
     return (
