@@ -9,14 +9,18 @@ import { Header } from '../components/Header';
 import BoletoScreen from './BoletoScreen';
 
 
+
+
 const HomeScreen = ({navigation}) => {
 
+    const teste = 0 //alterar, coloquei só pra poder rodar o app
+
     return(
-        <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+38}}>
+        <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+50}}>
             <Header/>
 
             <Text style={{fontSize: 25, color: 'white', marginTop: 77, marginLeft: 30}}>Transações</Text>
-            
+        
             <FlatList style={{
                 backgroundColor: 'white', 
                 marginTop: 20,
