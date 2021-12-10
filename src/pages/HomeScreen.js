@@ -30,17 +30,6 @@ const HomeScreen = ({navigation}) => {
         setSaldo(saldo+100)
     }
 
-    const teste = [
-        {
-            id: '1',
-            nome: 'Lucas',
-        },
-        {
-            id: '2',
-            nome: 'Cássia',
-        },
-    ]
-
     return(
         <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+38}}>
             <Header/>
