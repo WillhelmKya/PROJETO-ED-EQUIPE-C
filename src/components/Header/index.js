@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, Image, StyleSheet, TextInput } from 'react-native';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Feather } from '@expo/vector-icons'
+
 
 export const Header = () => {
 
@@ -20,10 +21,19 @@ export const Header = () => {
     return (
         <View style={styles.header}>
             <View style={styles.iconLogo}>
-                <Image source={require('../../../assets/icon.png')} style={{width: 40, height: 40, paddingLeft: 100}} resizeMode='contain'/>
+                <Image 
+                source={require('../../../assets/icon.png')} 
+                style={{
+                    width: 40, 
+                    height: 40, 
+                    paddingLeft: 100
+                }} 
+                resizeMode='contain'
+                />
             </View>
             <Text style={{fontSize: 26, color: 'white'}}>Saldo</Text>
             <View style={{flexDirection: 'row'}}>
+                
                 <TextInput 
                     keyboardType='numeric' 
                     style={{
@@ -33,6 +43,7 @@ export const Header = () => {
                 >
                     R$ {converterParaReais(saldo)}
                 </TextInput>
+
                 <TouchableOpacity 
                     onPress = {()=>adicionar()}
                     
