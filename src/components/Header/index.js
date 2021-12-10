@@ -16,6 +16,7 @@ export const Header = () => {
 
     const adicionar = () => {
         setSaldo(saldo+1)
+        a()
     }
 
     return (

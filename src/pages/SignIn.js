@@ -14,8 +14,6 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { Feather } from '@expo/vector-icons'
 import { FontAwesome } from '@expo/vector-icons'
 import SplashScreen from "./SplashScreen";
-import trie from "../dataStructure/trie";
-import lista from "../dataStructure/lista";
 import HomeScreen from "./HomeScreen";
 
 

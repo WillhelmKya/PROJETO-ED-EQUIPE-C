@@ -9,7 +9,7 @@ import HomeScreen from './HomeScreen';
 
 const BoletoScreen = ({navigation}) => {
     return(
-        <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+50}}> 
+        <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+38}}> 
             <View style={styles.header}>
                 <View>
                     <View style={styles.iconLogo}>

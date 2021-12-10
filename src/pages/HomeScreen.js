@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Dimensions } from "react-native";
-import { TextInput,View, Text, SafeAreaView, StyleSheet, ScrollView, Modal, FlatList } from 'react-native';
+import { TextInput, Image ,View, Text, SafeAreaView, StyleSheet, ScrollView, Modal, FlatList } from 'react-native';
 import styled from "styled-components";
 import * as Animatable from "react-native-animatable";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -10,9 +10,50 @@ import BoletoScreen from './BoletoScreen';
 import Saldo from '../models/Saldo';
 
 
+//TAD Fila
+class Fila {
+    constructor() {
+      this.items = {};
+      this.headIndex = 0;
+      this.tailIndex = 0;
+    }
+    enqueue(item) {
+      this.items[this.tailIndex] = item;
+      this.tailIndex++;
+      return this.items
+    }
+    dequeue() {
+      const item = this.items[this.headIndex];
+      delete this.items[this.headIndex];
+      this.headIndex++;
+      return item;
+    }
+    peek() {
+      return this.items[this.headIndex];
+    }
+    get length() {
+      return this.tailIndex - this.headIndex;
+    }
+  }
+  const queue = new Fila();
 
 
 const HomeScreen = ({navigation}) => {
+
+    const [isModalVisible,setIsModalVisible] = useState(false);
+
+    const changeModalVisible = (bool) => {
+        setIsModalVisible(bool)
+    }
+
+    const [saldo, setSaldo] = React.useState (0)
+
+    const converterParaReais = (saldoAtual) => {
+        const novoSaldo = saldoAtual / 1
+
+        return novoSaldo.toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+    }
+
 
     const lista = []
     //Esses valores serão adicionados com o modal do + e o id será trocado para os milissegundos
@@ -28,9 +69,48 @@ const HomeScreen = ({navigation}) => {
     lista.push(new Saldo(300, 0, 10))
     lista.push(new Saldo(300, 0, 11))
 
+
+    const adicionar = () => {
+        setSaldo(saldo+1)
+    }
+
     return(
-        <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+50}}>
-            <Header/>
+        <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+38}}>
+            <View style={styles.header}>
+            <View style={styles.iconLogo}>
+                <Image 
+                source={require('../../assets/icon.png')} 
+                style={{
+                    width: 40, 
+                    height: 40, 
+                    paddingLeft: 100
+                }} 
+                resizeMode='contain'
+                />
+            </View>
+            <Text style={{fontSize: 26, color: 'white'}}>Saldo</Text>
+            <View style={{flexDirection: 'row'}}>
+                
+                <TextInput 
+                    keyboardType='numeric' 
+                    style={{
+                        color: 'white', 
+                        fontSize: 40, 
+                    }}
+                >
+                    R$ {converterParaReais(saldo)}
+                </TextInput>
+
+                <TouchableOpacity 
+                    onPress = {()=>adicionar()}
+                    
+                    style={styles.buttonSaldo}
+                >
+                    <Feather name='plus' size={30} style={{color: 'white'}}/>
+                </TouchableOpacity>
+            </View>
+                    
+        </View>
 
             <Text style={{fontSize: 25, color: 'white', marginTop: 77, marginLeft: 30}}>Transações</Text>
         
@@ -64,6 +144,14 @@ const HomeScreen = ({navigation}) => {
                     <Feather name='file' size={20} style={{marginTop: 10}}/>
                 </TouchableOpacity>
             </View>
+            <Modal
+                transparent={true}
+                animationType="fade"
+                visible={isModalVisible}
+                onRequestClose={() => changeModalVisible(false)}
+            >
+                
+            </Modal>
         </SafeAreaView>
     )
 }
@@ -124,7 +212,34 @@ const styles = StyleSheet.create({
           width: 310,
           height: 63,
           alignItems: 'center',
-      }
+      },
+      header: {
+        height: 200,
+        backgroundColor: '#3E3E3E',
+        paddingLeft: 30,
+        paddingRight: 30,
+        paddingTop: 35,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20
+    },
+    iconLogo: {
+        backgroundColor: '#161616',
+        height: 50,
+        width: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 30,
+        marginLeft: 250
+    },
+    buttonSaldo: {
+        backgroundColor: '#80B01B',
+        borderRadius: 30,
+        height: 50,
+        width: 50,
+        alignItems:'center',
+        justifyContent: 'center',
+        marginLeft: 170,
+    },
 })
 
 export default HomeScreen
