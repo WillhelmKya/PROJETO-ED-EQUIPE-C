@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Dimensions } from "react-native";
-import { TextInput,View, Text, SafeAreaView, StyleSheet, ScrollView, Modal } from 'react-native';
+import { TextInput,View, Text, SafeAreaView, StyleSheet, ScrollView, Modal, FlatList } from 'react-native';
 import styled from "styled-components";
 import * as Animatable from "react-native-animatable";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -17,7 +17,7 @@ const HomeScreen = ({navigation}) => {
 
             <Text style={{fontSize: 25, color: 'white', marginTop: 77, marginLeft: 30}}>Transações</Text>
             
-            <ScrollView style={{
+            <FlatList style={{
                 backgroundColor: 'white', 
                 marginTop: 20,
                 borderTopLeftRadius: 30,
@@ -25,25 +25,10 @@ const HomeScreen = ({navigation}) => {
                 }}
                 fadingEdgeLength={5}
                 >
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-            </ScrollView>
+                    data={teste}
+                    keyExtractor={item=>item.id}
+                    renderItem={item=><Text style={{fontSize:20, color:'black'}}>{item.nome}</Text>}
+            </FlatList>
             
             <View style={styles.tabBar}>
                 <TouchableOpacity
