@@ -15,7 +15,7 @@ import Saldo from '../models/Saldo';
 const HomeScreen = ({navigation}) => {
 
     const lista = []
-    //Esses valores serão adicionados com o modal do +
+    //Esses valores serão adicionados com o modal do + e o id será trocado para os milissegundos
     lista.push(new Saldo(100, 200, 1))
     lista.push(new Saldo(300, 0, 2))
     lista.push(new Saldo(150, 2, 3))
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         paddingHorizontal: 50,
         paddingBottom: 20,
+        marginTop: Dimensions.get('window').height - 700,
     },
     button: {
         backgroundColor: '#80B01B',
