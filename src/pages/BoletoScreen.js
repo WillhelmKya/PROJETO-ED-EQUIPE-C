@@ -92,9 +92,9 @@ const styles = StyleSheet.create({
         height: 60,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         paddingHorizontal: 50,
-        paddingBottom: 10,
+        paddingBottom: 20,
     },
     button: {
         backgroundColor: '#80B01B',

@@ -7,13 +7,26 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { Feather } from '@expo/vector-icons'
 import { Header } from '../components/Header';
 import BoletoScreen from './BoletoScreen';
+import Saldo from '../models/Saldo';
 
 
 
 
 const HomeScreen = ({navigation}) => {
 
-    const teste = 0 //alterar, coloquei só pra poder rodar o app
+    const lista = []
+    //Esses valores serão adicionados com o modal do +
+    lista.push(new Saldo(100, 200, 1))
+    lista.push(new Saldo(300, 0, 2))
+    lista.push(new Saldo(150, 2, 3))
+    lista.push(new Saldo(200, 1000, 4))
+    lista.push(new Saldo(120.50, 10, 5))
+    lista.push(new Saldo(300, 0, 6))
+    lista.push(new Saldo(300, 0, 7))
+    lista.push(new Saldo(300, 0, 8))
+    lista.push(new Saldo(300, 0, 9))
+    lista.push(new Saldo(300, 0, 10))
+    lista.push(new Saldo(300, 0, 11))
 
     return(
         <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+50}}>
@@ -21,19 +34,20 @@ const HomeScreen = ({navigation}) => {
 
             <Text style={{fontSize: 25, color: 'white', marginTop: 77, marginLeft: 30}}>Transações</Text>
         
-            <FlatList style={{
-                backgroundColor: 'white', 
-                marginTop: 20,
-                borderTopLeftRadius: 30,
-                borderTopRightRadius: 30,
-                }}
-                fadingEdgeLength={5}
-                >
-                    data={teste}
+            <View style={styles.flat}>
+                <FlatList
+                    style={{borderRadius:30, marginVertical: 10,}}
+                    data={lista}
                     keyExtractor={item=>item.id}
-                    renderItem={item=><Text style={{fontSize:20, color:'black'}}>{item.nome}</Text>}
-            </FlatList>
-            
+                    renderItem={({item})=>
+                    <View style={styles.scrollItem}>
+                        <Text style={{color:'black', fontWeight: 'bold', fontSize:18, justifyContent:'center', marginLeft:30,}}>R$ {item.saldoFinal}</Text>
+                        <Text style={styles.textData}>{item.dataFinal}</Text>
+                    </View>
+                    }
+                />
+            </View>
+                    
             <View style={styles.tabBar}>
                 <TouchableOpacity
                 onPress={()=>navigation.navigate(HomeScreen)}
@@ -50,7 +64,6 @@ const HomeScreen = ({navigation}) => {
                     <Feather name='file' size={20} style={{marginTop: 10}}/>
                 </TouchableOpacity>
             </View>
-
         </SafeAreaView>
     )
 }
@@ -63,7 +76,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
         paddingHorizontal: 50,
-        paddingBottom: 10,
+        paddingBottom: 20,
     },
     button: {
         backgroundColor: '#80B01B',
@@ -81,20 +94,36 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 30,
     },
-    scrollItem: {
-        height: 55,
-        backgroundColor: '#E0E0E0',
-        marginTop: 20,
-        marginHorizontal: 20,
-        borderRadius: 30,
-        
-    },
     modalBackground: {
         flex:1,
         backgroundColor:'rgba(0,0,0,0.5)',
         justifyContent:'center',
         alignItems:'center'
-    }
+    },
+    flat: {
+        backgroundColor: 'white',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        height: 400
+      },
+      textData: {
+          color: 'black',
+          fontSize: 16,
+          justifyContent: 'center',
+          marginRight: 30,
+      },
+      scrollItem: {
+          justifyContent: 'space-between',
+          flexDirection: 'row',
+          backgroundColor: '#E0E0E0',
+          borderRadius: 30,
+          marginTop: 15,
+          width: 310,
+          height: 63,
+          alignItems: 'center',
+      }
 })
 
 export default HomeScreen
