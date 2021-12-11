@@ -55,6 +55,7 @@ const HomeScreen = ({navigation}) => {
         subt: 0,
         resultado:0 
     })
+
 /*
     const textSumChange = (val) =>{
         setAdicao ({
@@ -90,24 +91,18 @@ const HomeScreen = ({navigation}) => {
         return novoSaldo.toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
     }
 
+    const lista = new Fila();
 
-    const lista = []
-    //Esses valores serão adicionados com o modal do + e o id será trocado para os milissegundos
-    lista.push(new Saldo(100, 200, 1))
-    lista.push(new Saldo(300, 0, 2))
-    lista.push(new Saldo(150, 2, 3))
-    lista.push(new Saldo(200, 1000, 4))
-    lista.push(new Saldo(120.50, 10, 5))
-    lista.push(new Saldo(300, 0, 6))
-    lista.push(new Saldo(300, 0, 7))
-    lista.push(new Saldo(300, 0, 8))
-    lista.push(new Saldo(300, 0, 9))
-    lista.push(new Saldo(300, 0, 10))
-    lista.push(new Saldo(300, 0, 11))
-
+    const createList = () => {
+        const listaN = []
+        for (val = 0; val < lista.length; val++) {
+            listaN.push(lista.items[val])
+        }
+        return listaN;
+    }
 
     const adicionar = () => {
-        lista.push(new Saldo(100, 200, 12))
+        lista.enqueue(new Saldo(adicao.adicaox, adicao.subt))
     }
 
     return(
@@ -153,7 +148,7 @@ const HomeScreen = ({navigation}) => {
             <View style={styles.flat} >
                 <FlatList keyboardShouldPersistTaps='handled'
                     style={{borderRadius:30, marginVertical: 10,}}
-                    data={lista}
+                    data={createList()}
                     keyExtractor={item=>item.id}
                     renderItem={({item})=>
                     <View style={styles.scrollItem}>
@@ -241,13 +236,12 @@ const HomeScreen = ({navigation}) => {
 const styles = StyleSheet.create({
     tabBar: {
         backgroundColor: '#3E3E3E',
-        height: 60,
+        height: 90,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around',
         paddingHorizontal: 50,
-        paddingBottom: 20,
-        marginTop: Dimensions.get('window').height - 700,
+        paddingBottom: 45,
     },
     button: {
         backgroundColor: '#80B01B',
@@ -271,7 +265,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
-        height: 400
+        height: 440
       },
       textData: {
           color: 'black',
