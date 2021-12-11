@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Dimensions } from "react-native";
+import { Alert, Dimensions } from "react-native";
 import { TextInput, Image ,View, Text, TouchableOpacity, SafeAreaView, StyleSheet, ScrollView, Modal, FlatList } from 'react-native';
 import styled from "styled-components";
 import * as Animatable from "react-native-animatable";
@@ -49,6 +49,40 @@ const HomeScreen = ({navigation}) => {
     }
 
     const [saldo, setSaldo] = React.useState (0);
+
+
+    const [adicao,setAdicao] = React.useState({
+        adicaox: 0,
+        subt: 0,
+        resultado:0 
+    })
+
+    const textSumChange = (val) =>{
+        setAdicao ({
+            ... adicao,
+            adicaox: val,
+        });
+
+    }
+
+    const textMinChange = (val) =>{
+        setAdicao ({
+            ... adicao,
+            subt: val,
+        });
+
+    }
+
+    calcular = () => {
+        let add = adicao.adicaox - adicao.subt
+        setAdicao ({
+            ... adicao,
+            resultado: add
+        })
+        setSaldo (
+            saldo+adicao.resultado
+        )
+    }
 
     const converterParaReais = (saldoAtual) => {
         const novoSaldo = saldoAtual / 1
@@ -164,6 +198,7 @@ const HomeScreen = ({navigation}) => {
                                 keyboardType='number-pad' 
                                 textAlign="center" 
                                 fontSize={25}
+                                onChangeText={(val) => textSumChange(val)}
                                 style={styles.textInputModal}
                             />
                             <TextInput 
@@ -171,11 +206,12 @@ const HomeScreen = ({navigation}) => {
                                 keyboardType='number-pad' 
                                 textAlign="center" 
                                 fontSize={25}
+                                onChangeText={(val) => textMinChange(val)}
                                 style={styles.textInputModal}
                             />
                             <TouchableOpacity 
                                 style={styles.buttonConfirm}
-                                onPress={()=>changeModalVisible(false)}
+                                onPress={()=>calcular()}
                             >
                                 <Text style={{
                                     fontSize:25,
