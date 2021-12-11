@@ -1,14 +1,16 @@
 import React, {useState} from "react";
 import { Dimensions } from "react-native";
-import { TextInput, Image ,View, Text, SafeAreaView, StyleSheet, ScrollView, Modal, FlatList } from 'react-native';
+import { TextInput, Image ,View, Text, TouchableOpacity, SafeAreaView, StyleSheet, ScrollView, Modal, FlatList } from 'react-native';
 import styled from "styled-components";
 import * as Animatable from "react-native-animatable";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { Feather } from '@expo/vector-icons'
-import { Header } from '../components/Header';
 import BoletoScreen from './BoletoScreen';
 import Saldo from '../models/Saldo';
 
+
+
+const WIDTH = Dimensions.get('window').width;
+const HEIGHT_MODAL = 150;
 
 //TAD Fila
 class Fila {
@@ -46,7 +48,7 @@ const HomeScreen = ({navigation}) => {
         setIsModalVisible(bool)
     }
 
-    const [saldo, setSaldo] = React.useState (0)
+    const [saldo, setSaldo] = React.useState (0);
 
     const converterParaReais = (saldoAtual) => {
         const novoSaldo = saldoAtual / 1
@@ -71,7 +73,7 @@ const HomeScreen = ({navigation}) => {
 
 
     const adicionar = () => {
-        setSaldo(saldo+1)
+        lista.push(new Saldo(100, 200, 12))
     }
 
     return(
@@ -102,7 +104,7 @@ const HomeScreen = ({navigation}) => {
                 </TextInput>
 
                 <TouchableOpacity 
-                    onPress = {()=>adicionar()}
+                    onPress = {()=>changeModalVisible(true)}
                     
                     style={styles.buttonSaldo}
                 >
@@ -150,7 +152,43 @@ const HomeScreen = ({navigation}) => {
                 visible={isModalVisible}
                 onRequestClose={() => changeModalVisible(false)}
             >
-                
+                <View style={[styles.containertransparent]}>
+                    <TouchableOpacity
+                        disabled={true}
+                        style={styles.container2}
+                    >
+                        <View style={styles.modal}>
+                            <Text style={styles.textModal}>Recebidos e Gastos</Text>
+                            <TextInput 
+                                placeholder="Entrada" 
+                                keyboardType='number-pad' 
+                                textAlign="center" 
+                                fontSize={25}
+                                style={styles.textInputModal}
+                            />
+                            <TextInput 
+                                placeholder="Saída"
+                                keyboardType='number-pad' 
+                                textAlign="center" 
+                                fontSize={25}
+                                style={styles.textInputModal}
+                            />
+                            <TouchableOpacity 
+                                style={styles.buttonConfirm}
+                                onPress={()=>changeModalVisible(false)}
+                            >
+                                <Text style={{
+                                    fontSize:25,
+                                    color:'white'
+                                }}
+                                >
+                                    Confirmar
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                        
+                    </TouchableOpacity>
+                </View>
             </Modal>
         </SafeAreaView>
     )
@@ -182,12 +220,6 @@ const styles = StyleSheet.create({
         width: 60,
         alignItems: 'center',
         marginBottom: 30,
-    },
-    modalBackground: {
-        flex:1,
-        backgroundColor:'rgba(0,0,0,0.5)',
-        justifyContent:'center',
-        alignItems:'center'
     },
     flat: {
         backgroundColor: 'white',
@@ -240,6 +272,48 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginLeft: 170,
     },
+    container2 :{
+        flex:1,
+        alignItems:'center',
+        justifyContent:'center'
+
+    },
+    containertransparent :{
+        flex:1,
+        backgroundColor:'rgba(0,0,0,0.5)',
+        alignItems:'center',
+        justifyContent:'center'
+
+    },
+    modal: {
+        height: HEIGHT_MODAL+ 70,
+        width: WIDTH - 90,
+        paddingTop: 10,
+        backgroundColor:'#546b25',
+        borderRadius:20,
+        alignItems:'center',
+        justifyContent:'space-around'
+    },
+    textModal:{
+        color:'white',
+        fontSize:20
+    },
+    textInputModal: {
+        width:'90%',
+        height:50,
+        borderWidth:2,
+        backgroundColor:'white',
+        borderColor:'#80B01B',
+        borderRadius:40,
+    },
+    buttonConfirm: {
+        width:200,
+        height:50,
+        backgroundColor:'#80B01B',
+        borderRadius:40,
+        alignItems:'center',
+        justifyContent:'center'
+    }
 })
 
 export default HomeScreen
