@@ -50,13 +50,12 @@ const HomeScreen = ({navigation}) => {
 
     const [saldo, setSaldo] = React.useState (0);
 
-
     const [adicao,setAdicao] = React.useState({
         adicaox: 0,
         subt: 0,
         resultado:0 
     })
-
+/*
     const textSumChange = (val) =>{
         setAdicao ({
             ... adicao,
@@ -72,6 +71,7 @@ const HomeScreen = ({navigation}) => {
         });
 
     }
+*/
 
     calcular = () => {
         let add = adicao.adicaox - adicao.subt
@@ -150,8 +150,8 @@ const HomeScreen = ({navigation}) => {
 
             <Text style={{fontSize: 25, color: 'white', marginTop: 77, marginLeft: 30}}>Transações</Text>
         
-            <View style={styles.flat}>
-                <FlatList
+            <View style={styles.flat} >
+                <FlatList keyboardShouldPersistTaps='handled'
                     style={{borderRadius:30, marginVertical: 10,}}
                     data={lista}
                     keyExtractor={item=>item.id}
@@ -181,10 +181,12 @@ const HomeScreen = ({navigation}) => {
                 </TouchableOpacity>
             </View>
             <Modal
+                 
                 transparent={true}
                 animationType="fade"
                 visible={isModalVisible}
                 onRequestClose={() => changeModalVisible(false)}
+                
             >
                 <View style={[styles.containertransparent]}>
                     <TouchableOpacity
@@ -198,7 +200,10 @@ const HomeScreen = ({navigation}) => {
                                 keyboardType='number-pad' 
                                 textAlign="center" 
                                 fontSize={25}
-                                onChangeText={(val) => textSumChange(val)}
+                                onChangeText={val => setAdicao({
+                                    ... adicao,
+                                    adicaox:val
+                                })}
                                 style={styles.textInputModal}
                             />
                             <TextInput 
@@ -206,7 +211,10 @@ const HomeScreen = ({navigation}) => {
                                 keyboardType='number-pad' 
                                 textAlign="center" 
                                 fontSize={25}
-                                onChangeText={(val) => textMinChange(val)}
+                                onChangeText={val => setAdicao({
+                                    ... adicao,
+                                    subt:val
+                                })}
                                 style={styles.textInputModal}
                             />
                             <TouchableOpacity 
