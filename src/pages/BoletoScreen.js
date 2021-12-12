@@ -91,14 +91,11 @@ const BoletoScreen = ({navigation}) => {
                         <View style={styles.modal}>
                             <Text style={styles.textModal}>Recebidos e Gastos</Text>
                             <TextInput 
-                                placeholder="Entrada" 
-                                keyboardType='number-pad' 
+                                placeholder="Data de Vencimento" 
+                                keyboardType='decimal-pad'
                                 textAlign="center" 
                                 fontSize={25}
-                                onChangeText={val => setAdicao({
-                                    ... adicao,
-                                    adicaox:val
-                                })}
+                                onChangeText={(val)=>console.log(val)}
                                 style={styles.textInputModal}
                             />
                             <TextInput 
@@ -106,15 +103,11 @@ const BoletoScreen = ({navigation}) => {
                                 keyboardType='number-pad' 
                                 textAlign="center" 
                                 fontSize={25}
-                                onChangeText={val => setAdicao({
-                                    ... adicao,
-                                    subt:val
-                                })}
                                 style={styles.textInputModal}
                             />
                             <TouchableOpacity 
                                 style={styles.buttonConfirm}
-                                onPress={()=>calcular()}
+                                onPress={()=>console.log('funcionando')}
                             >
                                 <Text style={{
                                     fontSize:25,
@@ -221,6 +214,14 @@ const styles = StyleSheet.create({
         fontSize:20
     },
     textInputModal: {
+        width:'90%',
+        height:50,
+        borderWidth:2,
+        backgroundColor:'white',
+        borderColor:'#80B01B',
+        borderRadius:40,
+    },
+    boletoInputModal: {
         width:'90%',
         height:50,
         borderWidth:2,
