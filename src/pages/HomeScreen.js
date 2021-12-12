@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import { Alert, Dimensions } from "react-native";
-import { TextInput, Image ,View, Text, TouchableOpacity, SafeAreaView, StyleSheet, ScrollView, Modal, FlatList } from 'react-native';
+import { Alert, Button, Dimensions } from "react-native";
+import { TextInput, Image ,View, Text, TouchableOpacity, SafeAreaView, StyleSheet, ScrollView, Modal, FlatList, RefreshControl } from 'react-native';
 import styled from "styled-components";
 import * as Animatable from "react-native-animatable";
 import { Feather } from '@expo/vector-icons'
@@ -15,7 +15,7 @@ const HEIGHT_MODAL = 150;
 //TAD Fila
 class Fila {
     constructor() {
-      this.items = {};
+      this.items = [];
       this.headIndex = 0;
       this.tailIndex = 0;
     }
@@ -37,7 +37,6 @@ class Fila {
       return this.tailIndex - this.headIndex;
     }
   }
-  const queue = new Fila();
 
 
 const HomeScreen = ({navigation}) => {
@@ -91,19 +90,30 @@ const HomeScreen = ({navigation}) => {
         return novoSaldo.toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
     }
 
-    const lista = new Fila();
+    const queue = new Fila();
 
-    const createList = () => {
-        const listaN = []
-        for (val = 0; val < lista.length; val++) {
-            listaN.push(lista.items[val])
-        }
-        return listaN;
+    queue.enqueue(new Saldo(256, 10, 1))
+    queue.enqueue(new Saldo(100, 2, 2))
+
+    const state = {
+        isLoading: false,
+        items: queue.items,
     }
+
+    const getData = () => {
+        state.isLoading = true
+        state.items = queue.items
+        state.isLoading = true
+    }
+
+    console.log(state.items)
 
     const adicionar = () => {
-        lista.enqueue(new Saldo(adicao.adicaox, adicao.subt))
+        queue.enqueue(new Saldo(120, 160, 4))
+        console.log('ok')
+        console.log(queue)
     }
+    
 
     return(
         <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+38}}>
@@ -140,15 +150,18 @@ const HomeScreen = ({navigation}) => {
                     <Feather name='plus' size={30} style={{color: 'white'}}/>
                 </TouchableOpacity>
             </View>
-                    
-        </View>
 
+            <View style={{color: "white", width: 100}}>
+                <Button title="Refresh" onPress={()=> adicionar()}/>   
+            </View>  
+
+            </View>
             <Text style={{fontSize: 25, color: 'white', marginTop: 77, marginLeft: 30}}>Transações</Text>
         
             <View style={styles.flat} >
                 <FlatList keyboardShouldPersistTaps='handled'
                     style={{borderRadius:30, marginVertical: 10,}}
-                    data={createList()}
+                    data={state.items}
                     keyExtractor={item=>item.id}
                     renderItem={({item})=>
                     <View style={styles.scrollItem}>
@@ -156,6 +169,8 @@ const HomeScreen = ({navigation}) => {
                         <Text style={styles.textData}>{item.dataFinal}</Text>
                     </View>
                     }
+                    refreshing={state.isLoading}
+                    onRefresh={getData}
                 />
             </View>
                     
@@ -182,7 +197,8 @@ const HomeScreen = ({navigation}) => {
                 visible={isModalVisible}
                 onRequestClose={() => changeModalVisible(false)}
                 
-            >
+            > 
+
                 <View style={[styles.containertransparent]}>
                     <TouchableOpacity
                         disabled={true}
