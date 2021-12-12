@@ -95,21 +95,13 @@ const HomeScreen = ({navigation}) => {
     queue.enqueue(new Saldo(256, 10, 1))
     queue.enqueue(new Saldo(100, 2, 2))
 
-    const state = {
-        isLoading: false,
-        items: queue.items,
-    }
+    const [lista, setLista] = useState(queue.items)
 
-    const getData = () => {
-        state.isLoading = true
-        state.items = queue.items
-        state.isLoading = true
-    }
+    const [refreshing, setRefreshing] = useState(false)
 
-    console.log(state.items)
 
     const adicionar = () => {
-        queue.enqueue(new Saldo(120, 160, 4))
+        queue.enqueue(new Saldo(120, 160, 5))
         console.log('ok')
         console.log(queue)
     }
@@ -161,7 +153,7 @@ const HomeScreen = ({navigation}) => {
             <View style={styles.flat} >
                 <FlatList keyboardShouldPersistTaps='handled'
                     style={{borderRadius:30, marginVertical: 10,}}
-                    data={state.items}
+                    data={lista}
                     keyExtractor={item=>item.id}
                     renderItem={({item})=>
                     <View style={styles.scrollItem}>
@@ -169,8 +161,14 @@ const HomeScreen = ({navigation}) => {
                         <Text style={styles.textData}>{item.dataFinal}</Text>
                     </View>
                     }
-                    refreshing={state.isLoading}
-                    onRefresh={getData}
+                    refreshing={refreshing}
+                    onRefresh={() => {
+                        setRefreshing(true)
+                        setLista(queue.items)
+                        console.log('Refreshing')
+                        setRefreshing(false)
+                        }
+                    }
                 />
             </View>
                     
