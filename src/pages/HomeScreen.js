@@ -174,6 +174,7 @@ const HomeScreen = ({navigation}) => {
                     <Feather name='home' size={20} style={{marginTop: 10}}/>
                 </TouchableOpacity>
                 <TouchableOpacity 
+                onPress= {()=>navigation.navigate(BoletoScreen)}
                 style={styles.buttonMain} >
                     <Feather name='plus' size={30} style={{marginTop: 15}}/>
                 </TouchableOpacity>

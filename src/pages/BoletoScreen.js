@@ -1,13 +1,23 @@
 import React, {useState} from "react";
 import { Dimensions } from "react-native";
-import { View, Text, SafeAreaView, Image, StyleSheet, ScrollView, Button, FlatList } from 'react-native';
+import { View, Text, SafeAreaView, Image, StyleSheet,TextInput, TouchableOpacity
+    , Modal, ScrollView, Button, FlatList } from 'react-native';
 import * as Animatable from "react-native-animatable";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { Feather } from '@expo/vector-icons'
 import { Header } from '../components/Header';
 import HomeScreen from './HomeScreen';
 
+const WIDTH = Dimensions.get('window').width;
+const HEIGHT_MODAL = 150;
+
 const BoletoScreen = ({navigation}) => {
+
+    const [isModalVisible,setIsModalVisible] = useState(false);
+
+    const changeModalVisible = (bool) => {
+        setIsModalVisible(bool)
+    }
+    
     return(
         <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+38}}> 
             <View style={styles.header}>
@@ -54,6 +64,7 @@ const BoletoScreen = ({navigation}) => {
                     <Feather name='home' size={20} style={{marginTop: 10}}/>
                 </TouchableOpacity>
                 <TouchableOpacity 
+                onPress={()=>changeModalVisible(true)}
                 style={styles.buttonMain} >
                     <Feather name='plus' size={30} style={{marginTop: 15}}/>
                 </TouchableOpacity>
@@ -63,6 +74,61 @@ const BoletoScreen = ({navigation}) => {
                     <Feather name='file' size={20} style={{marginTop: 10}}/>
                 </TouchableOpacity>
             </View>
+            <Modal
+                 
+                transparent={true}
+                animationType="fade"
+                visible={isModalVisible}
+                onRequestClose={() => changeModalVisible(false)}
+                
+            > 
+
+                <View style={[styles.containertransparent]}>
+                    <TouchableOpacity
+                        disabled={true}
+                        style={styles.container2}
+                    >
+                        <View style={styles.modal}>
+                            <Text style={styles.textModal}>Recebidos e Gastos</Text>
+                            <TextInput 
+                                placeholder="Entrada" 
+                                keyboardType='number-pad' 
+                                textAlign="center" 
+                                fontSize={25}
+                                onChangeText={val => setAdicao({
+                                    ... adicao,
+                                    adicaox:val
+                                })}
+                                style={styles.textInputModal}
+                            />
+                            <TextInput 
+                                placeholder="Saída"
+                                keyboardType='number-pad' 
+                                textAlign="center" 
+                                fontSize={25}
+                                onChangeText={val => setAdicao({
+                                    ... adicao,
+                                    subt:val
+                                })}
+                                style={styles.textInputModal}
+                            />
+                            <TouchableOpacity 
+                                style={styles.buttonConfirm}
+                                onPress={()=>calcular()}
+                            >
+                                <Text style={{
+                                    fontSize:25,
+                                    color:'white'
+                                }}
+                                >
+                                    Confirmar
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                        
+                    </TouchableOpacity>
+                </View>
+            </Modal>
 
         </SafeAreaView>
     )
@@ -128,6 +194,48 @@ const styles = StyleSheet.create({
         marginTop: 45,
         marginLeft: 50,
     },
+    container2 :{
+        flex:1,
+        alignItems:'center',
+        justifyContent:'center'
+
+    },
+    containertransparent :{
+        flex:1,
+        backgroundColor:'rgba(0,0,0,0.5)',
+        alignItems:'center',
+        justifyContent:'center'
+
+    },
+    modal: {
+        height: HEIGHT_MODAL+ 70,
+        width: WIDTH - 90,
+        paddingTop: 10,
+        backgroundColor:'#546b25',
+        borderRadius:20,
+        alignItems:'center',
+        justifyContent:'space-around'
+    },
+    textModal:{
+        color:'white',
+        fontSize:20
+    },
+    textInputModal: {
+        width:'90%',
+        height:50,
+        borderWidth:2,
+        backgroundColor:'white',
+        borderColor:'#80B01B',
+        borderRadius:40,
+    },
+    buttonConfirm: {
+        width:200,
+        height:50,
+        backgroundColor:'#80B01B',
+        borderRadius:40,
+        alignItems:'center',
+        justifyContent:'center'
+    }
 })
 
 export default BoletoScreen
