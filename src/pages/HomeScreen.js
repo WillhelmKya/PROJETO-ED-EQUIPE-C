@@ -52,7 +52,6 @@ const HomeScreen = ({navigation}) => {
     const [adicao,setAdicao] = React.useState({
         adicaox: 0,
         subt: 0,
-        resultado:0 
     })
 
 /*
@@ -75,12 +74,8 @@ const HomeScreen = ({navigation}) => {
 
     calcular = () => {
         let add = adicao.adicaox - adicao.subt
-        setAdicao ({
-            ... adicao,
-            resultado: add
-        })
         setSaldo (
-            saldo+adicao.resultado
+            saldo+add
         )
     }
 
