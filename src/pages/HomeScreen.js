@@ -89,7 +89,7 @@ const HomeScreen = ({navigation}) => {
 
     const [refreshing, setRefreshing] = useState(false)
 
-    const [lista, setLista] = useState((queue.items).reverse())
+    const [lista, setLista] = useState(queue.items)
 
     const adicionar = () => {
         queue.enqueue(new Saldo(adicao.adicaox, adicao.subt))
@@ -268,7 +268,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
-        height: 440
+        height: 410
       },
       textData: {
           color: 'black',
