@@ -136,9 +136,14 @@ const BoletoScreen = ({navigation}) => {
 
                                 style={styles.textInputModal}
                             />
-                            <Text
-                                style={styles.boletoInputModal}
-                            >Cadastrar Boleto</Text>
+                            <<TextInput 
+                                placeholder="Título do Boleto" 
+                                keyboardType='decimal-pad'
+                                textAlign="center" 
+                                fontSize={15}
+
+                                style={styles.textInputModal}
+                            />
                             <TouchableOpacity 
                                 style={styles.buttonConfirm}
                                 onPress={()=>console.log('funcionando')}
