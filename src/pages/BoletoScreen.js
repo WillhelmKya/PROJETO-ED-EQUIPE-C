@@ -60,9 +60,10 @@ const BoletoScreen = ({navigation}) => {
     const [listaItems, setListaItems] = useState(lista.items)
 
     const adicionar = () => {
-        lista.add(0, new Boleto(adicao.adicaox, adicao.subt))
+        lista.add(0, new Boleto(novoBoleto.label, novoBoleto.vencimento, novoBoleto.id))
         setLista(lista)
-        setListaItems((lista.a).reverse())
+        setListaItems(lista.a)
+        console.log(listaItems)
     }
 
     return(
@@ -79,19 +80,19 @@ const BoletoScreen = ({navigation}) => {
             <View style={styles.flat} >
                 <FlatList keyboardShouldPersistTaps='handled'
                     style={{borderRadius:30, marginVertical: 10,}}
-                    data={lista}
+                    data={listaItems}
                     keyExtractor={item=>item.id}
                     renderItem={({item})=>
                     <View style={styles.scrollItem}>
-                        <Text style={{color:'black', fontWeight: 'bold', fontSize:18, justifyContent:'center', marginLeft:30,}}>R$ {item.saldoFinal}</Text>
-                        <Text style={styles.textData}>{item.dataFinal}</Text>
+                        <Text style={{color:'black', fontWeight: 'bold', fontSize:18, justifyContent:'center', marginLeft:30,}}>{item.label}</Text>
+                        <Text style={styles.textData}>{item.vencimento}</Text>
                     </View>
                     }
                     refreshing={refreshing}
                     onRefresh={() => {
                         setRefreshing(true)
-                        setQueue(queue)
-                        setLista((queue.items).reverse())
+                        setLista(lista)
+                        setListaItems(lista.a)
                         console.log('Refreshing')
                         setRefreshing(false)
                         }
@@ -137,20 +138,26 @@ const BoletoScreen = ({navigation}) => {
                                 keyboardType='decimal-pad'
                                 textAlign="center" 
                                 fontSize={15}
-
+                                onChangeText={val => setNovoBoleto({
+                                    ... novoBoleto,
+                                    vencimento: val
+                                })}
                                 style={styles.textInputModal}
                             />
                             <TextInput 
                                 placeholder="Título do Boleto" 
-                                keyboardType='decimal-pad'
+                                keyboardType='ascii-capable'
                                 textAlign="center" 
                                 fontSize={15}
-
+                                onChangeText={val => setNovoBoleto({
+                                    ... novoBoleto,
+                                    label: val
+                                })}
                                 style={styles.textInputModal}
                             />
                             <TouchableOpacity 
                                 style={styles.buttonConfirm}
-                                onPress={()=>console.log('funcionando')}
+                                onPress={()=>adicionar()}
                             >
                                 <Text style={{
                                     fontSize:25,
@@ -171,6 +178,12 @@ const BoletoScreen = ({navigation}) => {
 }
 
 const styles = StyleSheet.create({
+    textData: {
+        color: 'black',
+        fontSize: 16,
+        justifyContent: 'center',
+        marginRight: 30,
+    },
     flat: {
         backgroundColor: 'white',
         alignItems: 'center',
