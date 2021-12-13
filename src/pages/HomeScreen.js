@@ -15,7 +15,7 @@ const HEIGHT_MODAL = 150;
 //TAD Fila
 class Fila {
     constructor() {
-      this.items = [];
+      this.items = {};
       this.headIndex = 0;
       this.tailIndex = 0;
     }
@@ -33,7 +33,7 @@ class Fila {
     peek() {
       return this.items[this.headIndex];
     }
-    get length() {
+    length() {
       return this.tailIndex - this.headIndex;
     }
   }
@@ -89,7 +89,9 @@ const HomeScreen = ({navigation}) => {
 
     const [refreshing, setRefreshing] = useState(false)
 
-    const [lista, setLista] = useState(queue.items)
+    const [lista, setLista] = useState([])
+
+    const attLista = []
 
     const adicionar = () => {
         let add = adicao.adicaox - adicao.subt
@@ -97,8 +99,17 @@ const HomeScreen = ({navigation}) => {
             saldo+add
         )
         queue.enqueue(new Saldo(adicao.adicaox, adicao.subt))
+        if (queue.length() > 10) {
+            queue.dequeue();
+            console.log(queue)
+            console.log(lista)
+        }
         setQueue(queue)
-        setLista((queue.items).reverse())
+
+        for (const n in queue.items) {
+            attLista.push(queue.items[n])
+        }
+        setLista(attLista.reverse())
     }
     
 
@@ -156,7 +167,7 @@ const HomeScreen = ({navigation}) => {
                     onRefresh={() => {
                         setRefreshing(true)
                         setQueue(queue)
-                        setLista((queue.items).reverse())
+                        setLista(attLista)
                         console.log('Refreshing')
                         setRefreshing(false)
                         }

@@ -15,6 +15,7 @@ const HEIGHT_MODAL = 150;
 class Lista {
     constructor(){
         this.a = []
+        this.tailIndex = 0
     }
     set(i,x){
         this.a[i] = x
@@ -34,6 +35,7 @@ class Lista {
     }
     remove(i){
         this.a.splice(i,1)
+        this.tailIndex--;
         return this.a
     }
     }
@@ -61,9 +63,11 @@ const BoletoScreen = ({navigation}) => {
 
     const adicionar = () => {
         lista.add(0, new Boleto(novoBoleto.label, novoBoleto.vencimento, novoBoleto.id))
+        if (lista.tailIndex > 9) {
+            lista.remove(lista.tailIndex);
+        }
         setLista(lista)
         setListaItems(lista.a)
-        console.log(listaItems)
     }
 
     return(
