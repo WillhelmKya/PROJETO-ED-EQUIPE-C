@@ -39,30 +39,6 @@ class Lista {
     }
 
 //Alterar para Lista
-class Fila {
-    constructor() {
-      this.items = [];
-      this.headIndex = 0;
-      this.tailIndex = 0;
-    }
-    enqueue(item) {
-      this.items[this.tailIndex] = item;
-      this.tailIndex++;
-      return this.items
-    }
-    dequeue() {
-      const item = this.items[this.headIndex];
-      delete this.items[this.headIndex];
-      this.headIndex++;
-      return item;
-    }
-    peek() {
-      return this.items[this.headIndex];
-    }
-    get length() {
-      return this.tailIndex - this.headIndex;
-    }
-  }
 
 const BoletoScreen = ({navigation}) => {
 
@@ -77,16 +53,16 @@ const BoletoScreen = ({navigation}) => {
         vencimento: '',
     })
     
-    const [queue, setQueue] = useState(new Fila());
+    const [lista, setLista] = useState(new Lista());
 
     const [refreshing, setRefreshing] = useState(false)
 
-    const [lista, setLista] = useState(queue.items)
+    const [listaItems, setListaItems] = useState(lista.items)
 
     const adicionar = () => {
-        queue.enqueue(new Boleto(adicao.adicaox, adicao.subt))
-        setQueue(queue)
-        setLista((queue.items).reverse())
+        lista.add(0, new Boleto(adicao.adicaox, adicao.subt))
+        setLista(lista)
+        setListaItems((lista.a).reverse())
     }
 
     return(
