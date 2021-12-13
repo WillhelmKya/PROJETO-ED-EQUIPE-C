@@ -89,22 +89,18 @@ const BoletoScreen = ({navigation}) => {
                         style={styles.container2}
                     >
                         <View style={styles.modal}>
-                            <Text style={styles.textModal}>Recebidos e Gastos</Text>
+                            <Text style={styles.textModal}>Cadastrar Boleto</Text>
                             <TextInput 
                                 placeholder="Data de Vencimento" 
                                 keyboardType='decimal-pad'
                                 textAlign="center" 
-                                fontSize={25}
-                                onChangeText={(val)=>console.log(val)}
+                                fontSize={15}
+
                                 style={styles.textInputModal}
                             />
-                            <TextInput 
-                                placeholder="Saída"
-                                keyboardType='number-pad' 
-                                textAlign="center" 
-                                fontSize={25}
-                                style={styles.textInputModal}
-                            />
+                            <Text
+                                style={styles.boletoInputModal}
+                            >Cadastrar Boleto</Text>
                             <TouchableOpacity 
                                 style={styles.buttonConfirm}
                                 onPress={()=>console.log('funcionando')}
@@ -201,8 +197,8 @@ const styles = StyleSheet.create({
 
     },
     modal: {
-        height: HEIGHT_MODAL+ 70,
-        width: WIDTH - 90,
+        height: HEIGHT_MODAL+ 150,
+        width: WIDTH - 80,
         paddingTop: 10,
         backgroundColor:'#546b25',
         borderRadius:20,
@@ -214,24 +210,27 @@ const styles = StyleSheet.create({
         fontSize:20
     },
     textInputModal: {
-        width:'90%',
-        height:50,
+        width:'70%',
+        height:40,
         borderWidth:2,
         backgroundColor:'white',
         borderColor:'#80B01B',
         borderRadius:40,
     },
     boletoInputModal: {
-        width:'90%',
-        height:50,
+        width:'60%',
+        height:'60%',
         borderWidth:2,
         backgroundColor:'white',
         borderColor:'#80B01B',
         borderRadius:40,
+        textAlign:'center',
+        textAlignVertical:'center',
+        color:'#919191'
     },
     buttonConfirm: {
-        width:200,
-        height:50,
+        width:180,
+        height:40,
         backgroundColor:'#80B01B',
         borderRadius:40,
         alignItems:'center',
