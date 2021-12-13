@@ -6,9 +6,35 @@ import * as Animatable from "react-native-animatable";
 import { Feather } from '@expo/vector-icons'
 import { Header } from '../components/Header';
 import HomeScreen from './HomeScreen';
+import Boleto from '../models/Boleto';
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT_MODAL = 150;
+
+class Fila {
+    constructor() {
+      this.items = [];
+      this.headIndex = 0;
+      this.tailIndex = 0;
+    }
+    enqueue(item) {
+      this.items[this.tailIndex] = item;
+      this.tailIndex++;
+      return this.items
+    }
+    dequeue() {
+      const item = this.items[this.headIndex];
+      delete this.items[this.headIndex];
+      this.headIndex++;
+      return item;
+    }
+    peek() {
+      return this.items[this.headIndex];
+    }
+    get length() {
+      return this.tailIndex - this.headIndex;
+    }
+  }
 
 const BoletoScreen = ({navigation}) => {
 
@@ -17,7 +43,24 @@ const BoletoScreen = ({navigation}) => {
     const changeModalVisible = (bool) => {
         setIsModalVisible(bool)
     }
+
+    const [novoBoleto, setNovoBoleto] = React.useState({
+        label: '',
+        vencimento: '',
+    })
     
+    const [queue, setQueue] = useState(new Fila());
+
+    const [refreshing, setRefreshing] = useState(false)
+
+    const [lista, setLista] = useState(queue.items)
+
+    const adicionar = () => {
+        queue.enqueue(new Boleto(adicao.adicaox, adicao.subt))
+        setQueue(queue)
+        setLista((queue.items).reverse())
+    }
+
     return(
         <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+38}}> 
             <View style={styles.header}>
@@ -29,33 +72,28 @@ const BoletoScreen = ({navigation}) => {
             </View>
             <Text style={{fontSize:26 , color: 'white', marginLeft: 30, marginTop: 30}}>Boletos</Text>
 
-            <ScrollView style={{
-                backgroundColor: 'white', 
-                marginTop: 20,
-                borderTopLeftRadius: 30,
-                borderTopRightRadius: 30,
-                }}
-                fadingEdgeLength={5}
-                >
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-                <View style={styles.scrollItem}>
-                </View>
-            </ScrollView>
+            <View style={styles.flat} >
+                <FlatList keyboardShouldPersistTaps='handled'
+                    style={{borderRadius:30, marginVertical: 10,}}
+                    data={lista}
+                    keyExtractor={item=>item.id}
+                    renderItem={({item})=>
+                    <View style={styles.scrollItem}>
+                        <Text style={{color:'black', fontWeight: 'bold', fontSize:18, justifyContent:'center', marginLeft:30,}}>R$ {item.saldoFinal}</Text>
+                        <Text style={styles.textData}>{item.dataFinal}</Text>
+                    </View>
+                    }
+                    refreshing={refreshing}
+                    onRefresh={() => {
+                        setRefreshing(true)
+                        setQueue(queue)
+                        setLista((queue.items).reverse())
+                        console.log('Refreshing')
+                        setRefreshing(false)
+                        }
+                    }
+                />
+            </View>
 
             <View style={styles.tabBar}>
                 <TouchableOpacity
@@ -124,6 +162,14 @@ const BoletoScreen = ({navigation}) => {
 }
 
 const styles = StyleSheet.create({
+    flat: {
+        backgroundColor: 'white',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        height: 560
+      },
     header: {
         height: 100,
         backgroundColor: '#3E3E3E',
@@ -168,11 +214,14 @@ const styles = StyleSheet.create({
         marginBottom: 30,
     },
     scrollItem: {
-        height: 55,
+        justifyContent: 'space-between',
+        flexDirection: 'row',
         backgroundColor: '#E0E0E0',
-        marginTop: 20,
-        marginHorizontal: 20,
         borderRadius: 30,
+        marginTop: 15,
+        width: 310,
+        height: 63,
+        alignItems: 'center',
     },
     buttonSaldo: {
         backgroundColor: 'white',
