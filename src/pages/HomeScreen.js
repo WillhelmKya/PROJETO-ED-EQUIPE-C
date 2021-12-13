@@ -4,8 +4,8 @@ import { TextInput, Image ,View, Text, TouchableOpacity, SafeAreaView, StyleShee
 import styled from "styled-components";
 import * as Animatable from "react-native-animatable";
 import { Feather } from '@expo/vector-icons'
-import BoletoScreen from './BoletoScreen';
 import Saldo from '../models/Saldo';
+import BoletoScreen from './BoletoScreen'
 
 
 

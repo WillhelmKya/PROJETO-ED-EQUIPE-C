@@ -5,8 +5,8 @@ import { View, Text, SafeAreaView, Image, StyleSheet,TextInput, TouchableOpacity
 import * as Animatable from "react-native-animatable";
 import { Feather } from '@expo/vector-icons'
 import { Header } from '../components/Header';
-import HomeScreen from './HomeScreen';
 import Boleto from '../models/Boleto';
+import HomeScreen from "./HomeScreen";
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT_MODAL = 150;

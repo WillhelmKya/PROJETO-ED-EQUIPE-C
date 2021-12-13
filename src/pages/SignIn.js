@@ -17,6 +17,17 @@ import SplashScreen from "./SplashScreen";
 import HomeScreen from "./HomeScreen";
 
 
+const lista = [
+    'Julia',     'Arnaldo',
+    'Rodrigo',   'Ronaldo',
+    'Edson',     'Rafaela',
+    'Maria',     'Leticia',
+    'Rodrigo',   'Juliano',
+    'Robin',    'Athena',
+    'Alfredo'
+  ]
+
+
 const SignIn = ({navigation}) => {
 
     const [data,setData] = React.useState({
