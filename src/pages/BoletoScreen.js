@@ -136,7 +136,7 @@ const BoletoScreen = ({navigation}) => {
 
                                 style={styles.textInputModal}
                             />
-                            <<TextInput 
+                            <TextInput 
                                 placeholder="Título do Boleto" 
                                 keyboardType='decimal-pad'
                                 textAlign="center" 
