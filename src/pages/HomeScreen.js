@@ -92,10 +92,6 @@ const HomeScreen = ({navigation}) => {
     const [lista, setLista] = useState(queue.items)
 
     const adicionar = () => {
-        let add = adicao.adicaox - adicao.subt
-        setSaldo (
-            saldo+add
-        )
         queue.enqueue(new Saldo(adicao.adicaox, adicao.subt))
         setQueue(queue)
         setLista((queue.items).reverse())
@@ -221,7 +217,7 @@ const HomeScreen = ({navigation}) => {
                             />
                             <TouchableOpacity 
                                 style={styles.buttonConfirm}
-                                onPress={()=>{adicionar()}}
+                                onPress={()=>{adicionar(),calcular()}}
                             >
                                 <Text style={{
                                     fontSize:25,
