@@ -6,7 +6,6 @@ import * as Animatable from "react-native-animatable";
 import { Feather } from '@expo/vector-icons'
 import { Header } from '../components/Header';
 import Boleto from '../models/Boleto';
-import HomeScreen from "./HomeScreen";
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT_MODAL = 150;
@@ -15,7 +14,7 @@ const HEIGHT_MODAL = 150;
 class Lista {
     constructor(){
         this.a = []
-        this.tailIndex = 0
+        this.n = 0
     }
     set(i,x){
         this.a[i] = x
@@ -30,12 +29,12 @@ class Lista {
         else {
             this.a[i] = x;
         }
-        this.tailIndex++;
+        this.n++;
         return this.a
     }
     remove(i){
         this.a.splice(i,1)
-        this.tailIndex--;
+        this.n--;
         return this.a
     }
     }
@@ -63,8 +62,8 @@ const BoletoScreen = ({navigation}) => {
 
     const adicionar = () => {
         lista.add(0, new Boleto(novoBoleto.label, novoBoleto.vencimento, novoBoleto.id))
-        if (lista.tailIndex > 9) {
-            lista.remove(lista.tailIndex);
+        if (lista.n > 9) {
+            lista.remove(lista.n);
         }
         setLista(lista)
         setListaItems(lista.a)
@@ -106,7 +105,7 @@ const BoletoScreen = ({navigation}) => {
 
             <View style={styles.tabBar}>
                 <TouchableOpacity
-                onPress={()=>navigation.navigate(HomeScreen)}
+                onPress={()=>navigation.goBack()}
                 style={styles.button}>
                     <Feather name='home' size={20} style={{marginTop: 10}}/>
                 </TouchableOpacity>
