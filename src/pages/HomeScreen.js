@@ -72,7 +72,7 @@ const HomeScreen = ({navigation}) => {
     }
 */
 
-    calcular = () => {
+    const calcular = () => {
         let add = adicao.adicaox - adicao.subt
         setSaldo (
             saldo+add
@@ -85,20 +85,16 @@ const HomeScreen = ({navigation}) => {
         return novoSaldo.toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
     }
 
-    const queue = new Fila();
-
-    queue.enqueue(new Saldo(256, 10, 1))
-    queue.enqueue(new Saldo(100, 2, 2))
-
-    const [lista, setLista] = useState(queue.items)
+    const [queue, setQueue] = useState(new Fila());
 
     const [refreshing, setRefreshing] = useState(false)
 
+    const [lista, setLista] = useState((queue.items).reverse())
 
     const adicionar = () => {
-        queue.enqueue(new Saldo(120, 160, 5))
-        console.log('ok')
-        console.log(queue)
+        queue.enqueue(new Saldo(adicao.adicaox, adicao.subt))
+        setQueue(queue)
+        setLista((queue.items).reverse())
     }
     
 
@@ -138,10 +134,6 @@ const HomeScreen = ({navigation}) => {
                 </TouchableOpacity>
             </View>
 
-            <View style={{color: "white", width: 100}}>
-                <Button title="Refresh" onPress={()=> adicionar()}/>   
-            </View>  
-
             </View>
             <Text style={{fontSize: 25, color: 'white', marginTop: 77, marginLeft: 30}}>Transações</Text>
         
@@ -159,7 +151,8 @@ const HomeScreen = ({navigation}) => {
                     refreshing={refreshing}
                     onRefresh={() => {
                         setRefreshing(true)
-                        setLista(queue.items)
+                        setQueue(queue)
+                        setLista((queue.items).reverse())
                         console.log('Refreshing')
                         setRefreshing(false)
                         }
@@ -224,7 +217,7 @@ const HomeScreen = ({navigation}) => {
                             />
                             <TouchableOpacity 
                                 style={styles.buttonConfirm}
-                                onPress={()=>calcular()}
+                                onPress={()=>{adicionar(), calcular()}}
                             >
                                 <Text style={{
                                     fontSize:25,

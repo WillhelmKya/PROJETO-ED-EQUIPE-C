@@ -1,10 +1,10 @@
 class Saldo {
-    constructor(valueDeposit, valueOut, id) {
+    constructor(valueDeposit, valueOut) {
         this.valueDeposit = valueDeposit;
         this.valueOut = valueOut;
         this.saldoFinal = valueDeposit - valueOut
         this.date = new Date();
-        this.id = id //this.date.getTime();
+        this.id = this.date.getTime();
         this.day = this.date.getDate();
         this.month = this.date.getMonth();
         this.year = this.date.getFullYear();
