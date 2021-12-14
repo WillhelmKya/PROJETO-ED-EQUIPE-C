@@ -33,7 +33,13 @@ class Fila {
       this.headIndex++;//aumenta o index da "cabeça", assim diminuindo o tamanho da fila
       return item;
     }
-  }
+    peek() {
+        return this.items[this.headIndex];
+    }
+    length() {
+        return this.tailIndex - this.headIndex;
+    }
+}
 
 
 const HomeScreen = ({navigation}) => {

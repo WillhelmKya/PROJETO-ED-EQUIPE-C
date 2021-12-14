@@ -46,8 +46,8 @@ class Lista {
         this.n--;//diminui a length da TAD
         return this.a
     }
-    }
 
+}
 
 const BoletoScreen = ({navigation}) => {
 
