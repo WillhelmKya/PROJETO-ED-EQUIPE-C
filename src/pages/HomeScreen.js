@@ -228,7 +228,7 @@ const HomeScreen = ({navigation}) => {
                             />
                             <TouchableOpacity 
                                 style={styles.buttonConfirm}
-                                onPress={()=>{adicionar(),calcular()}}
+                                onPress={()=>{adicionar(),calcular(),changeModalVisible(false)}}
                             >
                                 <Text style={{
                                     fontSize:25,
