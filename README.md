@@ -9,22 +9,23 @@ O aplicativo fornece opção de uso registrando uma conta e, futuramente, contar
 
 
 
-<img src = "C:\Users\junio\Desktop\UFS\P3\Estrutura de dados\PROJETO-ED-EQUIPE-C\assets\screen-1.jpeg" height = "500" width = "250">
+<img src = "https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/screen-1.jpeg?raw=true" height = "500" width = "250">
+
+
 
 ​	
 
 Até o dado momento, o aplicativo conta com duas funcionalidades. Adicionar saldo por meio de depósitos, saques e transações e a adicionar alguns boletos por meio do código.
 
-<img src = "C:\Users\junio\Desktop\UFS\P3\Estrutura de dados\PROJETO-ED-EQUIPE-C\assets\func-1.jpeg" width = "250" height = "500">
+
+
+<img src = "https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/func-1.jpeg?raw=true" width = "250" height = "500">
 
 <h5 align = "center"> Funcionalidade 1<h5>
-    
 </h5>
 </h5>
 
-
-
-<img src = "C:\Users\junio\Desktop\UFS\P3\Estrutura de dados\PROJETO-ED-EQUIPE-C\assets\func-2.jpeg" height = "500" width = "250">
+<img src = "https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/func-2.jpeg?raw=true" height = "500" width = "250">
 
 <h5 align = "center"> Funcionalidade 2 <h5>
 
