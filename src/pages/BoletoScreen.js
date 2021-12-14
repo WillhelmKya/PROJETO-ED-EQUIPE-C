@@ -69,8 +69,9 @@ const BoletoScreen = ({navigation}) => {
     const [listaItems, setListaItems] = useState(lista.items)
 
     const adicionar = () => {
-        lista.add(0, new Boleto(novoBoleto.label, novoBoleto.vencimento, novoBoleto.id))
-        if (lista.n > 9) {
+        lista.add(0, new Boleto(novoBoleto.label, novoBoleto.vencimento))
+        //Remove o último elemento(mais antigo), assim que o tamanho ultrapassa 10.
+        if (lista.n > 10) {
             lista.remove(lista.n);
         }
         setLista(lista)

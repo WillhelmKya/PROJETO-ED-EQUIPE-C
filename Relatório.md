@@ -17,8 +17,6 @@ const adicionar = () => {
       queue.enqueue(new Saldo(adicao.adicaox, adicao.subt))
       if (queue.length() > 10) {
           queue.dequeue();
-          console.log(queue)
-          console.log(lista)
       }
       setQueue(queue)
 
@@ -32,7 +30,7 @@ const adicionar = () => {
 &emsp; **Adicionar Boleto**: A função foi feita utilizando a TAD lista e, assim como adicionar saldo, será empregado array como building block. Sempre que se adiciona um boleto, ele é adicionado a uma lista e a cada X boletos cadastrados (10, no caso do exemplo) é mudado o estado da lista e o boleto mais antigo adicionado sumirá da lista. Inicialmente o plano era que o boleto sumisse ao passar a data de vencimento, contudo, devido a alguns fatores não foi possível implementar do jeito que imaginávamos inicialmente. Dessa forma, optamos por utilizar a TAD mais simples para adicionar elementos e remover quando a TAD atingir um dado tamanho. Assim como a função de adicionar saldo, é necessário copiar os dados para uma outra lista visando a interface de usuário. 
 ```javascript
 const adicionar = () => {
-      lista.add(0, new Boleto(novoBoleto.label, novoBoleto.vencimento, novoBoleto.id))
+      lista.add(0, new Boleto(novoBoleto.label, novoBoleto.vencimento))
         if (lista.n > 9) {
             lista.remove(lista.n);
         }

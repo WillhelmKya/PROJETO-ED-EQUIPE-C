@@ -75,13 +75,17 @@ const HomeScreen = ({navigation}) => {
 
     const adicionar = () => {
         queue.enqueue(new Saldo(adicao.adicaox, adicao.subt))
+
+        //Quando a queue ultrapassa 10 items, o primeiro item (Head) é removido (dequeue).
         if (queue.length() > 10) {
             queue.dequeue();
-            console.log(queue)
-            console.log(lista)
         }
         setQueue(queue)
 
+        //Os objetos adicionados na queue ficam em {}, mas o componente utilizado para listar na tela
+        //todas as transações utiliza uma lista normal [] para ler os objetos dentro dela. Por conta 
+        //disso, foi utilizado um laço para que a cada atualização da queue a lista também sofresse 
+        //uma atualização comprela com todos os elementos.
         for (const n in queue.items) {
             attLista.push(queue.items[n])
         }
