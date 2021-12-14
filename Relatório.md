@@ -7,7 +7,7 @@
 ## 2 - Tecnologias Utilizadas
 
 &emsp; Todo o projeto foi construído utilizando a linguagem Javascript.                                                          
-&emsp; A interface foi toda construída utilizando React native. Foi escolhido a plataforma, pois esse tipo de aplicativo é bastante utilizado por pessoas comuns que utilizam majoritariamente dispositivos mobile no dia a dia. O React native permite desenvolver aplicativos para os sistemas mobile de forma nativa, além de ser uma bibliotéca javascript, que é a linguagem exigida para o projeto. Quanto às funções do app implementadas no backend necessitaram do uso de algumas TAD's.
+&emsp; A interface foi toda construída utilizando React native. Foi escolhido a plataforma, pois esse tipo de aplicativo é bastante utilizado por pessoas comuns que utilizam majoritariamente dispositivos mobile no dia a dia. O React native permite desenvolver aplicativos para os sistemas mobile de forma nativa, além de ser uma biblioteca javascript, que é a linguagem exigida para o projeto. Quanto às funções do app implementadas no backend necessitaram do uso de algumas TAD's.
 
 ### Funções de Adicionar Saldo e Adicionar Boleto
 
