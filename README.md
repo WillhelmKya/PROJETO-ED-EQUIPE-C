@@ -9,7 +9,7 @@ O aplicativo fornece opção de uso registrando uma conta e, futuramente, contar
 
 
 
-​														<img src = "https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/screen-1.jpeg?raw=true" height = "500" width = "250" align = "center">
+<img src = "https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/screen-1.jpeg?raw=true" height = "500" width = "250">
 
 
 
@@ -17,14 +17,14 @@ Até o dado momento, o aplicativo conta com duas funcionalidades. Adicionar sald
 
 
 
-​														<img src = "https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/func-1.jpeg?raw=true" width = "250" height = "500" align = "center">
+<img src = "https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/func-1.jpeg?raw=true" height = "500" width = "250">
 
 <h5 align = "center"> Funcionalidade 1<h5>
 </h5>
 </h5>
 
 
-​														<img src = "https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/func-2.jpeg?raw=true" height = "500" width = "250" align = "center">
+<img src = "https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/func-2.jpeg?raw=true" height = "500" width = "250">
 
 <h5 align = "center"> Funcionalidade 2 <h5>
 
