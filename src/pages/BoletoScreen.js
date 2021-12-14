@@ -12,34 +12,42 @@ const HEIGHT_MODAL = 150;
 
 //TAD Lista
 class Lista {
+    //construtor da classe
     constructor(){
-        this.a = []
-        this.n = 0
+        this.a = [] //escolhemos [] para lista ao invés de {} por conta da maneira com que o React lê os dados
+        this.n = 0 //define o tamanho da lista
     }
+    //definir o valor em uma posição
     set(i,x){
-        this.a[i] = x
+        this.a[i] = x //atribui o valor dado em sua posição desejada pelo programador
     }
+    //pegar um item da TAD
     get(i){
-        return this.a[i]
+        return this.a[i] //retorna o item na posição desejada pelo programador
     }
+    /*adiciona um item em certa posição, para o programa definimos essa posição sempre como 0, por conta do jeito
+    com que os boletos são adicionados em somente uma ordem, que é sempre no topo*/
     add(i,x){
+        /*if para saber se na posição há um item existente, se existir a lista rotaciona para direita, 
+        assim alocando espaço para onde quer ser inserido*/
         if (this.a[i]!= null){
                 this.a.splice(i,0,x)
             }
+        //else para se não houver nenhum item,a função simplesmente adiciona o item no local desejado    
         else {
             this.a[i] = x;
         }
-        this.n++;
+        this.n++; //aumenta a length(tamanho) da TAD
         return this.a
     }
+    //remove um item qualquer em uma posição desejada
     remove(i){
-        this.a.splice(i,1)
-        this.n--;
+        this.a.splice(i,1)//aqui é onde o item será removido e a lista será rotacionada para esquerda
+        this.n--;//diminui a length da TAD
         return this.a
     }
     }
 
-//Alterar para Lista
 
 const BoletoScreen = ({navigation}) => {
 
@@ -70,7 +78,7 @@ const BoletoScreen = ({navigation}) => {
     }
 
     return(
-        <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+38}}> 
+        <SafeAreaView style={{backgroundColor: '#161616', height: Dimensions.get('window').height+60}}> 
             <View style={styles.header}>
                 <View>
                     <View style={styles.iconLogo}>
@@ -160,7 +168,7 @@ const BoletoScreen = ({navigation}) => {
                             />
                             <TouchableOpacity 
                                 style={styles.buttonConfirm}
-                                onPress={()=>adicionar()}
+                                onPress={()=>(adicionar(),changeModalVisible(false))}
                             >
                                 <Text style={{
                                     fontSize:25,

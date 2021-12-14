@@ -12,29 +12,26 @@ import BoletoScreen from './BoletoScreen'
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT_MODAL = 150;
 
-//TAD Fila
+//TAD Fila - utilizada por conta do arranjamento dos itens
 class Fila {
+    //construção da classe
     constructor() {
-      this.items = {};
-      this.headIndex = 0;
-      this.tailIndex = 0;
+      this.items = {}; //objeto para alocação dos itens
+      this.headIndex = 0; //indicador da "cabeça" da fila
+      this.tailIndex = 0; //indicador para o último da fila
     }
+    //método para inserir um item na fila
     enqueue(item) {
-      this.items[this.tailIndex] = item;
-      this.tailIndex++;
+      this.items[this.tailIndex] = item; // coloca o item no fim da fila
+      this.tailIndex++; // aumenta o index, aumentando o tamanho da fila
       return this.items
     }
+    //método para retirar um item da fila
     dequeue() {
-      const item = this.items[this.headIndex];
-      delete this.items[this.headIndex];
-      this.headIndex++;
+      const item = this.items[this.headIndex];//define o item como o objeto que será retirado
+      delete this.items[this.headIndex];//retira o item da fila
+      this.headIndex++;//aumenta o index da "cabeça", assim diminuindo o tamanho da fila
       return item;
-    }
-    peek() {
-      return this.items[this.headIndex];
-    }
-    length() {
-      return this.tailIndex - this.headIndex;
     }
   }
 
@@ -54,23 +51,6 @@ const HomeScreen = ({navigation}) => {
         subt: 0,
     })
 
-/*
-    const textSumChange = (val) =>{
-        setAdicao ({
-            ... adicao,
-            adicaox: val,
-        });
-
-    }
-
-    const textMinChange = (val) =>{
-        setAdicao ({
-            ... adicao,
-            subt: val,
-        });
-
-    }
-*/
 
     const calcular = () => {
         let add = adicao.adicaox - adicao.subt
