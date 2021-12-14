@@ -7,23 +7,24 @@ Projeto de Finanças para Turma de Estrutura de Dados, Turma 4 Equipe C.
 
 O aplicativo fornece opção de uso registrando uma conta e, futuramente, contará com a opção de entrar sem conta.
 
-<div align="center">
-<img src="https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/screen-1.jpeg?raw=true" width="225px" height = "500px" />
-</div>
+
+
+<img src = "https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/screen-1.jpeg?raw=true" height = "500" width = "250">
+
+
 
 Até o dado momento, o aplicativo conta com duas funcionalidades. Adicionar saldo por meio de depósitos, saques e transações e a adicionar alguns boletos por meio do código.
 
-<div align="center">
-<img src="https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/func-1.jpeg?raw=true" width="225px" height = "500px" />
-</div>
+
+
+<img src = "https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/func-1.jpeg?raw=true" height = "500" width = "250">
 
 <h5 align = "center"> Funcionalidade 1<h5>
 </h5>
 </h5>
 
-<div align="center">
-<img src="https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/func-2.jpeg?raw=true" width="225px" height = "500px" />
-</div>
+
+<img src = "https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/func-2.jpeg?raw=true" height = "500" width = "250">
 
 <h5 align = "center"> Funcionalidade 2 <h5>
 
@@ -38,3 +39,4 @@ Até o dado momento, o aplicativo conta com duas funcionalidades. Adicionar sald
 ​		Todo o projeto foi desenvolvido utilizando Javascript. A interface gráfica foi construída utilizando React native, pois é uma ferramenta que permite desenvolver para dispositivos mobile nativamente. A primeira versão do utilitário foi desenvolvida somente para plataformas mobile, pois são majoritariamente utilizadas por pessoas comuns. O backend do aplicativo foi desenvolvido em node e utilizou-se de algumas estruturas de dados.
 
 - Relatório Técnico: https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/Relat%C3%B3rio.md
+- Vídeo explicativo: https://drive.google.com/file/d/1ZCky0UokTrwRlq_VlgLxj4fr8loJjijN/view
