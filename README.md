@@ -8,13 +8,13 @@ Projeto de Finanças para Turma de Estrutura de Dados, Turma 4 Equipe C.
 O aplicativo fornece opção de uso registrando uma conta e, futuramente, contará com a opção de entrar sem conta.
 
 <div align="center">
-<img src="https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/screen-1.jpeg?raw=true" width="250px" height = "500px" />
+<img src="https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/screen-1.jpeg?raw=true" width="225px" height = "500px" />
 </div>
 
 Até o dado momento, o aplicativo conta com duas funcionalidades. Adicionar saldo por meio de depósitos, saques e transações e a adicionar alguns boletos por meio do código.
 
 <div align="center">
-<img src="https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/func-1.jpeg?raw=true" width="250px" height = "500px" />
+<img src="https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/func-1.jpeg?raw=true" width="225px" height = "500px" />
 </div>
 
 <h5 align = "center"> Funcionalidade 1<h5>
@@ -22,7 +22,7 @@ Até o dado momento, o aplicativo conta com duas funcionalidades. Adicionar sald
 </h5>
 
 <div align="center">
-<img src="https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/func-2.jpeg?raw=true" width="250px" height = "500px" />
+<img src="https://github.com/WillhelmKya/PROJETO-ED-EQUIPE-C/blob/main/assets/func-2.jpeg?raw=true" width="225px" height = "500px" />
 </div>
 
 <h5 align = "center"> Funcionalidade 2 <h5>
